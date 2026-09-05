@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Simple and accurate currency converter"
+  >
+
+  <title>
+    CurrencyFlow | Currency Converter
+  </title>
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="/styles.css"
+  >
+
+</head>
+
+
+<body>
+
+
+  <div class="app">
+
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header class="header">
+
+      <div class="brand">
+
+        <div class="brand-icon">
+          CF
+        </div>
+
+        <div class="brand-text">
+
+          <strong>
+            CurrencyFlow
+          </strong>
+
+          <span>
+            Currency Converter
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="status">
+
+        <span class="status-dot"></span>
+
+        Latest available rates
+
+      </div>
+
+    </header>
+
+
+
+    <!-- =========================================
+         MAIN
+    ========================================== -->
+
+    <main>
+
+
+      <!-- =======================================
+           HERO
+      ======================================== -->
+
+      <section class="hero">
+
+
+        <div class="hero-content">
+
+          <span class="eyebrow">
+            CURRENCY CONVERSION
+          </span>
+
+
+          <h1>
+
+            Convert currencies
+
+            <span>
+              with confidence.
+            </span>
+
+          </h1>
+
+
+          <p>
+
+            Select your currencies, enter any
+            amount, and get the latest available
+            published exchange rate.
+
+          </p>
+
+        </div>
+
+
+
+        <!-- =====================================
+             CONVERTER
+        ====================================== -->
+
+        <section class="converter-card">
+
+
+          <div class="converter-title">
+
+            <div>
+
+              <span class="card-label">
+                CONVERTER
+              </span>
+
+              <h2>
+                Exchange amount
+              </h2>
+
+            </div>
+
+
+            <button
+              id="refreshRate"
+              class="refresh-button"
+              type="button"
+              title="Refresh exchange rate"
+              aria-label="Refresh exchange rate"
+            >
+              ↻
+            </button>
+
+          </div>
+
+
+
+          <!-- ===================================
+               INPUT AREA
+          ==================================== -->
+
+          <div class="conversion-row">
+
+
+            <!-- FROM -->
+
+            <div class="currency-box">
+
+              <label for="amount">
+                From
+              </label>
+
+
+              <div class="currency-input">
+
+                <input
+                  id="amount"
+                  type="text"
+                  inputmode="decimal"
+                  autocomplete="off"
+                  value="1"
+                  placeholder="Enter amount"
+                >
+
+
+                <select
+                  id="fromCurrency"
+                  aria-label="From currency"
+                >
+
+                  <option>
+                    Loading...
+                  </option>
+
+                </select>
+
+              </div>
+
+            </div>
+
+
+
+            <!-- SWAP -->
+
+            <button
+              id="swap"
+              class="swap-button"
+              type="button"
+              title="Swap currencies"
+              aria-label="Swap currencies"
+            >
+              ⇄
+            </button>
+
+
+
+            <!-- TO -->
+
+            <div class="currency-box">
+
+              <label for="toCurrency">
+                To
+              </label>
+
+
+              <div class="currency-input">
+
+                <div
+                  id="output"
+                  class="output"
+                >
+                  —
+                </div>
+
+
+                <select
+                  id="toCurrency"
+                  aria-label="To currency"
+                >
+
+                  <option>
+                    Loading...
+                  </option>
+
+                </select>
+
+              </div>
+
+            </div>
+
+
+          </div>
+
+
+
+          <!-- ===================================
+               RATE
+          ==================================== -->
+
+          <div
+            id="rateLine"
+            class="rate-line"
+          >
+            Loading exchange rate...
+          </div>
+
+
+
+          <!-- ===================================
+               RESULT
+          ==================================== -->
+
+          <div class="result-box">
+
+
+            <div>
+
+              <span class="result-label">
+                CONVERTED AMOUNT
+              </span>
+
+
+              <div
+                id="result"
+                class="result"
+              >
+                —
+              </div>
+
+            </div>
+
+
+            <div
+              id="resultMeta"
+              class="result-meta"
+            >
+              Waiting for conversion
+            </div>
+
+
+          </div>
+
+
+
+          <!-- ERROR -->
+
+          <div
+            id="error"
+            class="error"
+            hidden
+          ></div>
+
+
+        </section>
+
+      </section>
+
+
+
+      <!-- =======================================
+           SUPPORTED CURRENCIES
+      ======================================== -->
+
+      <section class="supported">
+
+
+        <div class="section-header">
+
+          <div>
+
+            <span class="eyebrow">
+              SUPPORTED CURRENCIES
+            </span>
+
+
+            <h2>
+              Select a currency
+            </h2>
+
+
+            <p>
+              All currencies currently available
+              from the exchange-rate provider.
+            </p>
+
+          </div>
+
+
+          <span
+            id="currencyCount"
+            class="currency-count"
+          >
+            Loading...
+          </span>
+
+        </div>
+
+
+
+        <!-- SEARCH -->
+
+        <div class="search">
+
+          <span>
+            ⌕
+          </span>
+
+
+          <input
+            id="currencySearch"
+            type="search"
+            placeholder="Search currency or ISO code..."
+            aria-label="Search currencies"
+          >
+
+        </div>
+
+
+
+        <!-- CURRENCY GRID -->
+
+        <div
+          id="currencyGrid"
+          class="currency-grid"
+        ></div>
+
+
+      </section>
+
+
+    </main>
+
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer class="footer">
+
+      <div>
+
+        <strong>
+          CurrencyFlow
+        </strong>
+
+        <span>
+          Exchange-rate reference application
+        </span>
+
+      </div>
+
+
+      <div>
+
+        No database
+        &nbsp; • &nbsp;
+        No accounts
+        &nbsp; • &nbsp;
+        Node.js + Express
+
+      </div>
+
+    </footer>
+
+
+  </div>
+
+
+  <script src="/app.js"></script>
+
+</body>
+
+</html>

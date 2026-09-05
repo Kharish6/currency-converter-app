@@ -1,0 +1,8 @@
+{
+  "note": "Optional local metadata only. Exchange rates are never stored here.",
+  "supported_examples": [
+    "AED", "AUD", "BRL", "CAD", "CHF", "CNY", "CZK", "DKK", "EUR",
+    "GBP", "HKD", "HUF", "IDR", "INR", "JPY", "KRW", "MXN", "MYR",
+    "NOK", "NZD", "PHP", "PLN", "SEK", "SGD", "THB", "TRY", "USD", "ZAR"
+  ]
+}
